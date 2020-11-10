@@ -16,6 +16,7 @@ body {
 
 img {
     /* set max width for images so they don't run off the screen */
+    margin: 0;
     max-width: 100%;
     height: auto;
 }
@@ -44,13 +45,25 @@ img {
 
 h1 {
     font-weight: 500;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     color: coral;
 }
 
+@media (min-width:55rem) {
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
 .home-about-textbox span {
-    font-size: 20px;
+    font-size: 14px;
     color: #ffffff;
+}
+
+@media (min-width:55rem) {
+    .home-about-textbox span {
+        font-size: 20px;
+    }
 }
 
 .title {
@@ -88,6 +101,10 @@ h1 {
     }
 }
 
+.title span {
+    color: coral;
+}
+
 /* buttons */
 
 .button {
@@ -100,6 +117,28 @@ h1 {
     padding: .3em 1.5em;
 }
 
+@media (min-width:55rem) {
+    .button {
+        font-size: 2rem;
+    }
+}
+
+.button-small {
+    font-size: 0.7rem;
+}
+
+@media (min-width:30rem) {
+    .button-small {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width:60rem) {
+    .button-small {
+        font-size: 1.2rem;
+    }
+}
+
 .button-accent {
     color: coral;
 }
@@ -108,12 +147,6 @@ h1 {
 .button-accent:focus {
     background: coral;
     color: #232323;
-}
-
-@media (min-width:55rem) {
-    .button {
-        font-size: 2rem;
-    }
 }
 
 /* header
@@ -131,6 +164,7 @@ h1 {
     outline: 3px solid #232323;
     text-align: center;
     position: fixed;
+    box-shadow: 0 0 1em 0 rgba(0,0,0,1);
 }
 
 .logo {
@@ -203,14 +237,24 @@ nav a:focus {
 
 .home-about {
     width: 100%;
-}
-
-.home-about-textbox {
     background-color: #232323;
     padding: 3em;
     outline: 2px solid coral;
     outline-offset: -2.5em;
+    padding-top: 10vh;
+    height: 100vh;
+}
+
+.home-about-textbox {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
     color: #ffffff;
+}
+
+.home-about-textbox p {
+    font-size: 10pt;
 }
 
 .rectangle {
@@ -218,9 +262,9 @@ nav a:focus {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
-    width: 350px;
-    height: 20px;
+    margin-top: -6vh;
+    width: 200px;
+    height: 50px;
     left: 50%;
     transform: translateX(-50%);
     background:#232323;
@@ -230,11 +274,94 @@ nav a:focus {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -70px;
+    margin-top: -18vh;
     position: absolute;
     padding: 0;
-    width: 250px;
+    width: 150px;
     height: auto;
     left: 50%;
     transform: translateX(-50%);
+}
+
+@media (min-width: 50rem) {
+    .home-about-textbox p {
+        font-size: 14pt;
+    }
+
+    .rectangle {
+        margin-top: -6vh;
+        width: 350px;
+        height: 50px;
+    }
+    
+    .selfie {
+        margin-top: -18vh;
+        width: 250px;
+        height: auto;
+    }
+}
+
+/* home-portfolio
+=================== */
+
+.home-portfolio {
+    margin: 0;
+    padding-top: 0.1em;
+    width: 100%;
+    background-color: #232323;
+    text-align: center;
+}
+
+#gifs {
+    /* Prevent vertical gaps */
+    column-count:         1;
+    column-gap:           0px;  
+}
+
+.port-item {
+    margin: 0;
+    position: relative;
+    background-color: #161616;
+}
+
+.port-desc {
+    position: absolute;
+    z-index: 100;
+    bottom: 0em;
+    left: 0em;
+    right: 0em;
+    padding-bottom: 2em; 
+    color: rgba(255,255,255,1);
+    background: rgba(0,0,0,.75);
+}
+
+.port-desc p {
+    margin: 0.4em;
+}
+
+@media (min-width: 30rem) {
+    #gifs {
+        column-count:         2;
+    }
+
+    .port-item:hover img {
+        opacity: 0.3;
+    }
+    
+    .port-desc {
+        display: none;
+        background: rgba(0,0,0,0);
+    }
+    
+    .port-item:hover .port-desc {
+        display: block;
+        color: rgba(255,255,255,1);
+        background: rgba(0,0,0,0);
+    }
+}
+
+@media (min-width: 80rem) {
+    #gifs {
+        column-count:         3;
+    }
 }
