@@ -8,33 +8,9 @@
     </head>
 
     <body>
-        <section class="home-hero">
-            <div class="container">
-                <div class="title-container">
-                    <h1 class="title">
-                        I<span>'</span>m Helen<br>Dai<span>.</span>
-                    </h1>
-                </div>
-            </div>
-            <div class="container">
-                <div class="subtitle-container">
-                    <p class="subtitle">
-                        U of T'21 BASc. Candidate in Computer Engineering
-                    </p>
-                </div>
-            </div>
-            <a href="#home-portfolio-id" class="button button-accent">See my work</a>
-        </section>
-
-        <section class="home-about">
-            <div class="rectangle"></div>
-            <figure id="home-about-id" class="selfie">
-                <img src="img/selfie_round.png">
-            </figure>
-            <div class="home-about-textbox">
-                <h1>About Me<br>
-                    <span>Xiao Ying (Helen) Dai</span>
-                </h1>
+        <section class="PocketTravel-about">
+            <div class="PocketTravel-textbox">
+                <h1>PocketTravel</h1>
                 <p>
                     I am a Computer Engineering undergraduate at the University of Toronto and an experienced programming tutor.
                     I started coding when I was in Grade 11 have since then been very passionate about Computer Science
@@ -48,8 +24,8 @@
             </div>
         </section>
 
-        <section id="home-portfolio-id" class="home-portfolio">
-            <h1>Some of My Latest Work</h1>
+        <section class="PocketTravel-walkthrough">
+            <h1>Some of my latest work</h1>
             <section id="gifs">
                 <!-- portfolio item 01 -->
                 <figure class="port-item">
@@ -57,33 +33,6 @@
                     <figcaption class="port-desc">
                         <p>PocketTravel</p>
                         <a href="PocketTravel.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
-                </figure>
-
-                <!-- portfolio item 05 -->
-                <figure class="port-item">
-                    <img src="img/tuner_pro.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>TunerPro</p>
-                        <a href="TunerPro.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
-                </figure>
-
-                <!-- portfolio item 06 -->
-                <figure class="port-item">
-                    <img src="img/reversi_ai.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>Reversi AI</p>
-                        <a href="ReversiAI.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
-                </figure>
-
-                <!-- portfolio item 03 -->
-                <figure class="port-item">
-                    <img src="img/bubble_mania.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>Bubble Mania</p>
-                        <a href="BubbleMania.html" class="button button-accent button-small">Project details</a>
                     </figcaption>
                 </figure>
 
@@ -96,8 +45,16 @@
                     </figcaption>
                 </figure>
 
-                 <!-- portfolio item 04 -->
-                 <figure class="port-item">
+                <!-- portfolio item 03 -->
+                <figure class="port-item">
+                    <img src="img/bubble_mania.gif" alt="portfolio item" width="1000">
+                    <figcaption class="port-desc">
+                        <p>Bubble Mania</p>
+                        <a href="BubbleMania.html" class="button button-accent button-small">Project details</a>
+                    </figcaption>                </figure>
+
+                <!-- portfolio item 04 -->
+                <figure class="port-item">
                     <img src="img/cycle_63.gif" alt="portfolio item" width="1000">
                     <figcaption class="port-desc">
                         <p>Cycle 63</p>
@@ -106,23 +63,7 @@
                 </figure>
 
             </section>
-        </section>
 
-        <section id="home-contact-id" class="home-contact">
-            <div class="container">
-                <h1>Contact Me</h1>
-                <p><span>Primary email:</span> helendai23@gmail.com<br><span>Secondary email:</span> helen.dai@mail.utoronto.ca<br><span>Cell:</span> +1 (416) 918-3689</p>
-                <div class="container">
-                    <figure class="contact-item">
-                        <img src="img/linkedin.png" alt="contact item" width="47">
-                        <a href="https://www.linkedin.com/in/xiao-ying-helen-dai" class="button button-black button-small">LinkedIn</a>
-                    </figure>
-                    <figure class="contact-item">
-                        <img src="img/github.png" alt="contact item" width="50">
-                        <a href="https://github.com/helen-23" class="button button-black button-small">GitHub</a>
-                    </figure>
-                </div>
-            </div>
         </section>
 
     </body>
@@ -131,10 +72,10 @@
         <img class="logo" src="img/logo_coral.png" alt="Helen Dai logo">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="#home-about-id">About</a></li>
+            <li><a href="index.html#home-about-id">About</a></li>
             <li>
                 <div class="dropdown">
-                    <a href="#home-portfolio-id">Portfolio</a>
+                    <a href="index.html#home-portfolio-id">Portfolio</a>
                     <div class="dropdown-content">
                         <a href="PocketTravel.html">PocketTravel</a>
                         <a href="ReversiAI.html">Reversi AI</a>
@@ -145,7 +86,7 @@
                     </div>
                 </div>
             </li>
-            <li><a href="#home-contact-id">Contact</a></li>
+            <li><a href="index.html#home-contact-id">Contact</a></li>
         </ul>
     </nav>
 
