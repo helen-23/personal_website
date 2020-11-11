@@ -5,66 +5,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Helen Dai</title>
             <link href="css/styles.css" rel="stylesheet" type="text/css">
+            <link href="css/styles_TunnerPro.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
-        <section class="PocketTravel-about">
-            <div class="PocketTravel-textbox">
-                <h1>PocketTravel</h1>
-                <p>
-                    I am a Computer Engineering undergraduate at the University of Toronto and an experienced programming tutor.
-                    I started coding when I was in Grade 11 have since then been very passionate about Computer Science
-                    and Engineering as a whole. You will see some of my selected projects from the past, including some single and
-                    multiplayer computer games, a command line chess game with AI, and some hardware applications implemented
-                    on the FPGA.<br><br>During my Professional Experience Year (U of T's PEY Progam), I interned at Intel San Jose Campus for a full year
-                    as a Software Engineering intern. During the summer of 2020, I also did research at U of T with Professor Vaughn Betz. Please
-                    check out my resume to see more detales on my past academic and professional experiences.<br><br>My current interests are
-                    Computer Vision, Machine Learning, and Human-Computer Interaction.
-                </p>
+        <div class="description-textbox">
+            <!-- Title -->
+            <h1>TunnerPro<br><span>A Music Tunner Hardware Application</span></h1>
+
+            <!-- Intro -->
+            <h2>Introduction</h2>
+            <p>TunerPro is a hardware application built on the FPGA (DE1-SoC) for tunning music notes. All codes are written in Assembly. Here is a short demo of the project.</p>
+            <div class="figure_container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/D4s9kMr_bOs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-        </section>
 
-        <section class="PocketTravel-walkthrough">
-            <h1>Some of my latest work</h1>
-            <section id="gifs">
-                <!-- portfolio item 01 -->
-                <figure class="port-item">
-                    <img src="img/pocket_travel.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>PocketTravel</p>
-                        <a href="PocketTravel.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
-                </figure>
+            <!-- How to Use -->
+            <h2>How to Use</h2>
+            <ol class="ol_long">
+                <li>Connect a microphone to the DE1-SoC board</li>
+                <li>Press Button0 to record your note for two seconds; LED0 will light up during recoding</li>
+                <li>Once recording is complete, the result will automatically show up on screen, which will tell you which note you played and if it was too high, slightly high, too low, or slightly low</li>
+                <li>You can press Button1 to play a sample tune for the latest note you just recorded</li>
+                <li>You can also use Switch0 to Switch6 to select a note to play as sample</li>
+            </ol>
 
-                <!-- portfolio item 02 -->
-                <figure class="port-item">
-                    <img src="img/gunman_mahem.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>Gunman Mahem</p>
-                        <a href="GunmanJump.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
-                </figure>
-
-                <!-- portfolio item 03 -->
-                <figure class="port-item">
-                    <img src="img/bubble_mania.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>Bubble Mania</p>
-                        <a href="BubbleMania.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>                </figure>
-
-                <!-- portfolio item 04 -->
-                <figure class="port-item">
-                    <img src="img/cycle_63.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>Cycle 63</p>
-                        <a href="Cycle63.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
-                </figure>
-
-            </section>
-
-        </section>
+            <!-- Methods -->
+            <h2>Methods</h2>
+            <h3>Finding Closest Note</h3>
+            <p>The recorded analog signal is sampled and stored as digital data. To find the closest note that was recorded, an ideal solution would be to do a Discrete Time Fourier Transform. However, it is difficult doing this with Assembly, so I have decided to simplify the algorithm:</p>            
+            <ol class="ol_short">
+                <li>Loop through the stored digital data and keep track of where all the minimum and maximum values are in time</li>
+                <li>With minimum and maximum locations, we can compute the period</li>
+                <li>Average out all the individual periods along the 2 seconds signal and invert it to get the frequency</li>
+                <li>Map the frequency to a note</li>
+            </ol>
+            <p>This method is an approximation, so if the recording is contaminated with a lot of noise, the result will be inaccurate. I have tested this in a quiet room with ear pods as microphones, and my stimuli include a set of digitally generated notes and my own voice humming the same set of notes. All of these tests passed as expected.</p>
+            
+            <h3>Recording and Timing</h3>
+            <p>The interrupt handlers are in charge of processing events passed in by the user. When Button0 is pressed, a timer counter starts at 0 and begins counting. When it reaches 2 seconds, the timer interrupt is triggered, and the results are computed and displayed on screen. During recording, the button interrupt is never triggered to avoid interrupting the recording process.</p>
+        </div>
 
     </body>
 
