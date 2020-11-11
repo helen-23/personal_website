@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Helen Dai</title>
             <link href="css/styles.css" rel="stylesheet" type="text/css">
-            <link href="css/styles_Cycle63.css" rel="stylesheet" type="text/css">
+            <link href="css/styles_ReversiAI.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -17,7 +17,9 @@
             <h2>Introduction</h2>
             <p>Reversi, an older version of Othello, is a strategy game played by two players (white and black) on an 8 x 8 grid board. The game uses tiles that are white on one side, and black on the other side, where one player plays white; the other player plays black. The players take turns to alternatively place their pieces linearly on either side their opponent’s piece to ‘own’ those pieces in between (replace them with the player’s color).</p>
             <p>This project was originally written in C and was intended for playing in the command line, but for the fun of it, I used SFML to make a display out of the game. In this demo, the computer player plays the white piece and the human player (me) plays the black piece. Black piece always goes first in a game.</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/IQFDgQufLyI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="figure_container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IQFDgQufLyI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
 
             <!-- Rules -->
             <h2>Rules</h2>
@@ -50,34 +52,34 @@
             
             <h3>2. Board of Factors</h3>
             <p>Corners are the best spots! Once a player takes over a corner, the opponent would no longer be able to flip that piece, and the player can also use it to trap the opponent’s pieces along three directions.  On the other hand, the three spots directly adjacent to each corner are the worst spots to make a move, because they lead the opponent to the corners. Taking advantage of these cases, I made a board (implemented through an 8 x 8 2D array) that stores factors of each position on the game board, representing how favorable the spot is. The corners are assigned a larger factor, the layer around the corners are assigned a factor of 0. The next layer is assigned a smaller positive factor, and the rest are assigned a factor of 1, as shown on the left.</p>
-            <figure class="subpage-item">
+            <div class="figure_container">
                 <img src="img/ReversiAI/factor_board.PNG" alt="subpage item">
-            </figure>
+            </div>
             <p>Say for example that the computer is white player, shown below is the score board, where each entry in the board corresponds to the same position on the game board. For simplicity, I am not drawing the game board here. In the diagram, I use W to represent a white piece placed in the game board, and B to represent a black piece. I initialized the board with all -1 before calculating the scores of valid positions. This way, invalid positions will remain a score of -1 after calculating all valid scores. The highlighted entries are candidate entries for the white player, and we can see that all the possible valid positions have a score of 1 (flip one of the black pieces).</p>
-            <figure class="subpage-item">
+            <div class="figure_container">
                 <img src="img/ReversiAI/score_before_factor.PNG" alt="subpage item">
-            </figure>
+            </div>
             <p>Now, multiply the scores by the corresponding factors, and we will be able to differentiate between the choices. In this case, the top right corner is the best choice.</p>
-            <figure class="subpage-item">
+            <div class="figure_container">
                 <img src="img/ReversiAI/score_after_factor.PNG" alt="subpage item">
-            </figure>
+            </div>
 
             <h3>3. Minmax Algorithm</h3>
             <section id="grid-id" class="demo-grid">
                 <figure class="subpage-item">
-                    <img src="" alt="subpage item">
+                    <img src="img/ReversiAI/minmax.PNG" alt="subpage item">
                 </figure>
-                <p>Due to a time limit posed on the project, I used the minmax algorithm to look four steps ahead. After computing all of the computer’s available moves and each score corresponding to the move as described above, instead of making the move, create a new game board and simulate each candidate move on there. For each simulation of a move X, compute all of the opponent’s possible moves and each score corresponding to the move Y. Find the highest possible opponent score and compute the net score (computer’s score at X minus opponent’s highest score). This resulting net score will be the score if the computer chooses to place the piece at that specific location X. This process was done once more in a recursion to look four steps ahead of the game.</p>
+                <p>Due to a runtime limit posed on the project, I used the minmax algorithm to look four steps ahead. After computing all of the computer’s available moves and each score corresponding to the move as described above, instead of making the move, create a new game board and simulate each candidate move on there. For each simulation of a move X, compute all of the opponent’s possible moves and each score corresponding to the move Y. Find the highest possible opponent score and compute the net score (computer’s score at X minus opponent’s highest score). This resulting net score will be the score if the computer chooses to place the piece at that specific location X. This process was done once more in a recursion to look four steps ahead of the game.</p>
             </section>
 
-            <h3>4. Alpha-Beta algorithm</h3>
+            <h3>4. Alpha-Beta Pruning</h3>
             <section id="grid-id" class="demo-grid">
                 <figure class="subpage-item">
-                    <img src="" alt="subpage item">
+                    <img src="img/ReversiAI/alphabeta.PNG" alt="subpage item">
                 </figure>
                 <p>
-                    The Minmax algorithm has redundant steps, which takes up time, so this is an improvement of the Minmax algorithm. After computing the first location’s net score (computer’s score – opponent’s best score), set this net score as the maximum and move on to the next position X. As you are calculating the opponent’s possible scores if computer places piece at position X, keep track of a sub net score (computer’s score at X – opponent’s current position Y score). If you find a sub net score that is lower than your maximum score, stop calculating, abandon the position X, and move on to the next position. Keep following these steps, along the way, if you found a higher net score (Note: not higher sub net score!), update the maximum net score.<br><br>
-                    The reason why you can abandon position X if you found a net sub score below the current maximum score is because the opponent’s goal is to minimize the computer player’s scores. If you found an opponent position Y where the opponent will provide you with a lower net score for placing your piece at position X, the odds are they will place their piece at position Y or somewhere else that will provide the computer player with a even lower net score. So compared to this position X, you already know that some other location you checked earlier give you a better net score. There is no point in keep on searching for opponent scores if computer player places at position X.
+                    The Minmax algorithm has redundant steps, which takes up time, so Alpha-Beta pruning is an improvement to the Minmax algorithm. After computing the first candidate location X1’s net score (computer’s score minus opponent’s best score for placing the piece at X1), save X1’s net score as the maximum net score and move on to the next position X2. For X2, instead of looping through all the opponent’s candidate moves and finding its maximum score all, keep track of a sub-net score (computer’s score at X2 minus opponent’s current position Y score). If you find a sub net score that is lower than your maximum score, stop calculating for the opponent, abandon the position X2, and move on to the next position X3. Continue with these steps and along the way, if you found a higher net score for Xi, update the maximum net score.<br><br>
+                    The reason why you can abandon a position X if you found a net sub score below the current maximum score is because you are assuming that the opponent Is as smart as you, so the opponent’s goal is to minimize your scores. If you found an opponent position Y where the opponent will provide you with a lower net score for placing your piece at position X, the odds are they will place their piece at position Y or somewhere else that will provide the computer player with a even lower net score. So compared to this position X, you already know that some other location you checked earlier give you a better net score. There is no point in keep on searching for opponent scores if computer player places at position X.
                 </p>
             </section>
         </div>
