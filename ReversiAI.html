@@ -5,66 +5,82 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Helen Dai</title>
             <link href="css/styles.css" rel="stylesheet" type="text/css">
+            <link href="css/styles_Cycle63.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
-        <section class="PocketTravel-about">
-            <div class="PocketTravel-textbox">
-                <h1>PocketTravel</h1>
-                <p>
-                    I am a Computer Engineering undergraduate at the University of Toronto and an experienced programming tutor.
-                    I started coding when I was in Grade 11 have since then been very passionate about Computer Science
-                    and Engineering as a whole. You will see some of my selected projects from the past, including some single and
-                    multiplayer computer games, a command line chess game with AI, and some hardware applications implemented
-                    on the FPGA.<br><br>During my Professional Experience Year (U of T's PEY Progam), I interned at Intel San Jose Campus for a full year
-                    as a Software Engineering intern. During the summer of 2020, I also did research at U of T with Professor Vaughn Betz. Please
-                    check out my resume to see more detales on my past academic and professional experiences.<br><br>My current interests are
-                    Computer Vision, Machine Learning, and Human-Computer Interaction.
-                </p>
-            </div>
-        </section>
+        <div class="description-textbox">
+            <!-- Title -->
+            <h1>Reversi AI<br><span>A Reversi (Orthello) Chess Game AI</span></h1>
 
-        <section class="PocketTravel-walkthrough">
-            <h1>Some of my latest work</h1>
-            <section id="gifs">
-                <!-- portfolio item 01 -->
-                <figure class="port-item">
-                    <img src="img/pocket_travel.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>PocketTravel</p>
-                        <a href="PocketTravel.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
+            <!-- Intro -->
+            <h2>Introduction</h2>
+            <p>Reversi, an older version of Othello, is a strategy game played by two players (white and black) on an 8 x 8 grid board. The game uses tiles that are white on one side, and black on the other side, where one player plays white; the other player plays black. The players take turns to alternatively place their pieces linearly on either side their opponent’s piece to ‘own’ those pieces in between (replace them with the player’s color).</p>
+            <p>This project was originally written in C and was intended for playing in the command line, but for the fun of it, I used SFML to make a display out of the game. In this demo, the computer player plays the white piece and the human player (me) plays the black piece. Black piece always goes first in a game.</p>
+            <iframe src="https://youtu.be/IQFDgQufLyI" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+
+            <!-- Rules -->
+            <h2>Rules</h2>
+            <p>
+                Diagrams below show a sequence of possible positions and moves in a game of Reversi. The game starts off with two white and two black tiles placed in advance at the centre, as shown in the first diagram.<br><br>
+                There must be a continuous straight line of tile(s) of the opponent’s colour in at least one of the eight directions from the candidate empty position (North, South, East, West, and diagonals). In the position immediately following the continuous straight line, a tile of the player’s colour must already be placed.<br><br>
+                After playing a tile at a position that meets the above criteria, all of the lines of the opponent’s tiles that meet the criteria above are flipped to the player’s colour. In the second diagram below, all of the candidate positions for White’s next move are shown shaded.<br><br>
+                If the White player decides to play at row c, column a, the Black tile at row c, column b is flipped and the board looks like what is shown in the third diagram.<br><br>
+            </p>
+            <figure class="subpage-grid">
+                <img src="img/ReversiAI/initial_board.PNG" alt="subpage item">
+                <img src="img/ReversiAI/white_canidate.PNG" alt="subpage item">
+                <img src="img/ReversiAI/white_first_move.PNG" alt="subpage item">
+            </figure>
+            <p>
+                Now, The Black player's candidate moves are shown int the first diagram below. If the Black player lays a tile at (b, a), the board appears like what is shown in the second diagram below.<br><br>
+                Finally, if the White player lays a tile at (a, c) the board appears like what is shown in the third diagram below.<br><br>
+                The turns alternate between the players, unless one player has no available move, in which case the only player with an available move is allowed to continue to make moves until a move becomes available for the opponent, at this point, the opponent is allowed to take a turn and the alternating turns between the players resumes. The game ends when either: 1) the entire board is full, or 2) neither player has an available move.
+            </p>
+            <figure class="subpage-grid">
+                <img src="img/ReversiAI/black_canidate.PNG" alt="subpage item">
+                <img src="img/ReversiAI/black_first_move.PNG" alt="subpage item">
+                <img src="img/ReversiAI/white_second_move.PNG" alt="subpage item">
+            </figure>
+
+            <!-- Computer Player (AI) Implementation -->
+            <h2>Computer Player (AI) Implementation</h2>
+            <h3>1. Naïve Solution (Basic Implementation)</h3>
+            <p>At every computer’s turn, loop through the entire board to find all of computer’s current available moves. For each available move, count the number of the opponent’s pieces the computer can flip if it chooses to place its piece there, we call this the “score” of the move. Finally, find the maximum score out of all the available moves and place the piece there.</p>            
+            
+            <h3>2. Board of Factors</h3>
+            <p>Corners are the best spots! Once a player takes over a corner, the opponent would no longer be able to flip that piece, and the player can also use it to trap the opponent’s pieces along three directions.  On the other hand, the three spots directly adjacent to each corner are the worst spots to make a move, because they lead the opponent to the corners. Taking advantage of these cases, I made a board (implemented through an 8 x 8 2D array) that stores factors of each position on the game board, representing how favorable the spot is. The corners are assigned a larger factor, the layer around the corners are assigned a factor of 0. The next layer is assigned a smaller positive factor, and the rest are assigned a factor of 1, as shown on the left.</p>
+            <figure class="subpage-item">
+                <img src="img/ReversiAI/factor_board.PNG" alt="subpage item">
+            </figure>
+            <p>Say for example that the computer is white player, shown below is the score board, where each entry in the board corresponds to the same position on the game board. For simplicity, I am not drawing the game board here. In the diagram, I use W to represent a white piece placed in the game board, and B to represent a black piece. I initialized the board with all -1 before calculating the scores of valid positions. This way, invalid positions will remain a score of -1 after calculating all valid scores. The highlighted entries are candidate entries for the white player, and we can see that all the possible valid positions have a score of 1 (flip one of the black pieces).</p>
+            <figure class="subpage-item">
+                <img src="img/ReversiAI/score_before_factor.PNG" alt="subpage item">
+            </figure>
+            <p>Now, multiply the scores by the corresponding factors, and we will be able to differentiate between the choices. In this case, the top right corner is the best choice.</p>
+            <figure class="subpage-item">
+                <img src="img/ReversiAI/score_after_factor.PNG" alt="subpage item">
+            </figure>
+
+            <h3>3. Minmax Algorithm</h3>
+            <section id="grid-id" class="demo-grid">
+                <figure class="subpage-item">
+                    <img src="" alt="subpage item">
                 </figure>
-
-                <!-- portfolio item 02 -->
-                <figure class="port-item">
-                    <img src="img/gunman_mahem.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>Gunman Mahem</p>
-                        <a href="GunmanJump.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
-                </figure>
-
-                <!-- portfolio item 03 -->
-                <figure class="port-item">
-                    <img src="img/bubble_mania.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>Bubble Mania</p>
-                        <a href="BubbleMania.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>                </figure>
-
-                <!-- portfolio item 04 -->
-                <figure class="port-item">
-                    <img src="img/cycle_63.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>Cycle 63</p>
-                        <a href="Cycle63.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
-                </figure>
-
+                <p>Due to a time limit posed on the project, I used the minmax algorithm to look four steps ahead. After computing all of the computer’s available moves and each score corresponding to the move as described above, instead of making the move, create a new game board and simulate each candidate move on there. For each simulation of a move X, compute all of the opponent’s possible moves and each score corresponding to the move Y. Find the highest possible opponent score and compute the net score (computer’s score at X minus opponent’s highest score). This resulting net score will be the score if the computer chooses to place the piece at that specific location X. This process was done once more in a recursion to look four steps ahead of the game.</p>
             </section>
 
-        </section>
+            <h3>4. Alpha-Beta algorithm</h3>
+            <section id="grid-id" class="demo-grid">
+                <figure class="subpage-item">
+                    <img src="" alt="subpage item">
+                </figure>
+                <p>
+                    The Minmax algorithm has redundant steps, which takes up time, so this is an improvement of the Minmax algorithm. After computing the first location’s net score (computer’s score – opponent’s best score), set this net score as the maximum and move on to the next position X. As you are calculating the opponent’s possible scores if computer places piece at position X, keep track of a sub net score (computer’s score at X – opponent’s current position Y score). If you find a sub net score that is lower than your maximum score, stop calculating, abandon the position X, and move on to the next position. Keep following these steps, along the way, if you found a higher net score (Note: not higher sub net score!), update the maximum net score.<br><br>
+                    The reason why you can abandon position X if you found a net sub score below the current maximum score is because the opponent’s goal is to minimize the computer player’s scores. If you found an opponent position Y where the opponent will provide you with a lower net score for placing your piece at position X, the odds are they will place their piece at position Y or somewhere else that will provide the computer player with a even lower net score. So compared to this position X, you already know that some other location you checked earlier give you a better net score. There is no point in keep on searching for opponent scores if computer player places at position X.
+                </p>
+            </section>
+        </div>
 
     </body>
 
