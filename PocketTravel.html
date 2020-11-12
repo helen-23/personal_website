@@ -80,7 +80,7 @@
             <!-- Algorithms -->
             <h2>Algorithms</h2>
 
-            <h3>Nearest Intersection</h3>
+            <h3>Nearest Intersection – K-D Tree</h3>
             <p>Our algorithm snaps the user’s mouse input coordinates to the nearest intersection by using a k-d Tree, which divides the intersections into sections according to their x and y coordinates,  alternately simplifying the search by avoiding points that it are unworthy in visiting. To build the tree, steps are as follows:</p>
             <ol>
                 <li class="list">pick the point in the middle of the horizontal axis (shown in red), set it as the head node</li>
@@ -93,7 +93,7 @@
                 <li class="list">given a point, traverse through the k-d tree by alternating the comparison between its x coordinate to a node’s x coordinate and its y coordinate to a node’s y coordinate (i.e. compare the point’s x coordinate with the head node, then compare the point’s y coordinate with the y coordinate of one of the nodes in the next level, and so on)</li>
                 <li class="list_last">once arrived at a leaf node, first calculate the Euclidean distance between the given point and the leaf node, then for this particular example below, get the leaf node’s parent node and calculate the distance between the given point and the horizontal line that passes through the parent node. If the distance to the leaf node is shorter than the distance to the line, then there is no need to check the node on the other side of  the parent node</li>
             </ol>
-            <p>That's how the k-d tree avoids the points that are unworthy of visiting. As shown on the graph, the naïve search algorithm becomes slower as more points are being searched, but using KD Tree, this algorithm does slow down as drastically, instead, it stays at around 0.</p>
+            <p>That's how the k-d tree avoids the points that are unworthy of visiting. As shown on the graph, the naïve search algorithm becomes slower as more points are being searched, but using k-d Tree, this algorithm does slow down as drastically, instead, it stays at around 0.</p>
             <div class="figure_container">
                 <img src="img/PocketTravel/kd_tree.gif" alt="subpage item" width="770em">
                 <img src="img/PocketTravel/kd_tree_improvement.png" alt="subpage item" width="770em">
