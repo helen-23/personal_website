@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800;900&display=swap');
+
+.description-textbox {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.description-textbox h1{
+    margin: 0, auto;
+    margin-top: 1em;
+    text-align: center;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.description-textbox ol{
+    height: 10em;
+}
+
+.description-textbox span {
+    font-size: 20pt;
+}
+
+.team {
+    text-align: center;
+}
+
+#grid-id {
+    column-count: 1;
+}
+
+@media(min-width: 55rem) {
+    #grid-id {
+        column-count:         2;
+        column-gap:           1em;
+    }
+}
+
+.subpage-item {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+.subpage-grid {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.figure_container {
+    width: 100%;
+    text-align: center;
+    margin: 0,auto;
+}
