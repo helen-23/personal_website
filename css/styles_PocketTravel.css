@@ -13,10 +13,6 @@
     font-size: 40px;
 }
 
-.description-textbox ol{
-    height: 10em;
-}
-
 .description-textbox span {
     font-size: 20pt;
 }
@@ -41,4 +37,15 @@
     margin-block-end: 0;
     margin-inline-start: 0;
     margin-inline-end: 0;
+}
+
+.list {
+    margin: 0;
+    width: 100%;
+}
+
+.list_last {
+    margin: 0;
+    margin-bottom: 1em;
+    width: 100%;
 }

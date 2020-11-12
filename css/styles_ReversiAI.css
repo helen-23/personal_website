@@ -43,14 +43,7 @@
     margin-inline-end: 0;
 }
 
-.subpage-grid {
-    display: inline-block;
-    vertical-align: middle;
-    width: 100%;
-}
-
 .figure_container {
     width: 100%;
     text-align: center;
-    margin: 0,auto;
 }

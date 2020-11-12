@@ -29,21 +29,21 @@
                 After playing a tile at a position that meets the above criteria, all of the lines of the opponent’s tiles that meet the criteria above are flipped to the player’s colour. In the second diagram below, all of the candidate positions for White’s next move are shown shaded.<br><br>
                 If the White player decides to play at row c, column a, the Black tile at row c, column b is flipped and the board looks like what is shown in the third diagram.<br><br>
             </p>
-            <figure class="subpage-grid">
-                <img src="img/ReversiAI/initial_board.PNG" alt="subpage item">
+            <div class="figure_container">
+                <img src="img/ReversiAI/initial_board.PNG" alt="subpage item">                                
                 <img src="img/ReversiAI/white_canidate.PNG" alt="subpage item">
                 <img src="img/ReversiAI/white_first_move.PNG" alt="subpage item">
-            </figure>
+            </div>
             <p>
                 Now, The Black player's candidate moves are shown int the first diagram below. If the Black player lays a tile at (b, a), the board appears like what is shown in the second diagram below.<br><br>
                 Finally, if the White player lays a tile at (a, c) the board appears like what is shown in the third diagram below.<br><br>
                 The turns alternate between the players, unless one player has no available move, in which case the only player with an available move is allowed to continue to make moves until a move becomes available for the opponent, at this point, the opponent is allowed to take a turn and the alternating turns between the players resumes. The game ends when either: 1) the entire board is full, or 2) neither player has an available move.
             </p>
-            <figure class="subpage-grid">
+            <div class="figure_container">
                 <img src="img/ReversiAI/black_canidate.PNG" alt="subpage item">
                 <img src="img/ReversiAI/black_first_move.PNG" alt="subpage item">
                 <img src="img/ReversiAI/white_second_move.PNG" alt="subpage item">
-            </figure>
+            </div>
 
             <!-- Computer Player (AI) Implementation -->
             <h2>Computer Player (AI) Implementation</h2>

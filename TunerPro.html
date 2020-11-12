@@ -22,23 +22,23 @@
 
             <!-- How to Use -->
             <h2>How to Use</h2>
-            <ol class="ol_long">
-                <li>Connect a microphone to the DE1-SoC board</li>
-                <li>Press Button0 to record your note for two seconds; LED0 will light up during recoding</li>
-                <li>Once recording is complete, the result will automatically show up on screen, which will tell you which note you played and if it was too high, slightly high, too low, or slightly low</li>
-                <li>You can press Button1 to play a sample tune for the latest note you just recorded</li>
-                <li>You can also use Switch0 to Switch6 to select a note to play as sample</li>
+            <ol>
+                <li class="list">Connect a microphone to the DE1-SoC board</li>
+                <li class="list">Press Button0 to record your note for two seconds; LED0 will light up during recoding</li>
+                <li class="list">Once recording is complete, the result will automatically show up on screen, which will tell you which note you played and if it was too high, slightly high, too low, or slightly low</li>
+                <li class="list">You can press Button1 to play a sample tune for the latest note you just recorded</li>
+                <li class="list_last">You can also use Switch0 to Switch6 to select a note to play as sample</li>
             </ol>
 
             <!-- Methods -->
             <h2>Methods</h2>
             <h3>Finding Closest Note</h3>
             <p>The recorded analog signal is sampled and stored as digital data. To find the closest note that was recorded, an ideal solution would be to do a Discrete Time Fourier Transform. However, it is difficult doing this with Assembly, so I have decided to simplify the algorithm:</p>            
-            <ol class="ol_short">
-                <li>Loop through the stored digital data and keep track of where all the minimum and maximum values are in time</li>
-                <li>With minimum and maximum locations, we can compute the period</li>
-                <li>Average out all the individual periods along the 2 seconds signal and invert it to get the frequency</li>
-                <li>Map the frequency to a note</li>
+            <ol>
+                <li class="list">Loop through the stored digital data and keep track of where all the minimum and maximum values are in time</li>
+                <li class="list">With minimum and maximum locations, we can compute the period</li>
+                <li class="list">Average out all the individual periods along the 2 seconds signal and invert it to get the frequency</li>
+                <li class="list_last">Map the frequency to a note</li>
             </ol>
             <p>This method is an approximation, so if the recording is contaminated with a lot of noise, the result will be inaccurate. I have tested this in a quiet room with ear pods as microphones, and my stimuli include a set of digitally generated notes and my own voice humming the same set of notes. All of these tests passed as expected.</p>
             

@@ -13,14 +13,6 @@
     font-size: 40px;
 }
 
-.ol_long{
-    height: 15em;
-}
-
-.ol_short {
-    height: 12em;
-}
-
 .description-textbox span {
     font-size: 20pt;
 }
@@ -57,4 +49,15 @@
     width: 100%;
     text-align: center;
     margin: 0,auto;
+}
+
+.list {
+    margin: 0;
+    width: 100%;
+}
+
+.list_last {
+    margin: 0;
+    margin-bottom: 1em;
+    width: 100%;
 }

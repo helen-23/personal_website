@@ -17,22 +17,21 @@
             <h2>Introduction</h2>
             <p>Cycle 63 is a single player simulation game observed from the first person point of view. The game screen consists of the background, which is an image of a two-lane road, and three objects, which include two randomly recurring obstacles and a bike handle. In the original plan, there are six external devices: a laser, a laser receiver (phototransistor), a pedal, a handle bar, and two leaf switches. In the completed project, there are two external devices, a bike pedal and a micro switch. The inspiration and motivation of this game came from the observation that people tend to sit in front of their screen too long while playing video games. The lack of exercise causes many health issues, including diabetes, cardiovascular disease, and high blood pressure. With the interactive component added to the game, the user is able to play and exercise at the same time, thus solving the problem.</p>
             <p>The aim of this simulation is to “move forward” in the game while avoiding the obstacles. The speed of the movement is controlled by changing the frequency of pedaling on the bike. In addition, switching lanes is done by turning the bike handle.</p>
-        
+            <div class="figure_container">
+                <img src="img/Cycle63/moving_obsticle_demo.gif" alt="subpage item">
+            </div>
+
             <!-- Game Flow -->
             <h2>Game Flow</h2>
-            <section id="grid-id" class="demo-grid">
-                <figure class="subpage-item">
-                    <img src="img/Cycle63/moving_obsticle_demo.gif" alt="subpage item">
-                </figure>
-                <p>
-                    During game mode, two lanes will show on the screen, the left lane and the right lane, with a randomly recurring obstacle on each lane. The default starting position of the handle-bar is on the right side of the screen.<br><br>
-                    During the movement of the obstacles (the red squares), their length and width increase by the size of one pixel for a downwards shift of every two pixels, and their horizontal positions change by the size of one pixel for a downwards shift of every 4 pixels. The obstacles’ speed depend on the frequency at which KEY1 is clicked. When KEY3 is pressed, the handle bar moves to left side of the road, and when KEY2 is pressed, the handle bar goes to the right side of the road.<br><br>
-                    When either obstacle reaches the bottom side of the screen, that particular square is reset to the position at the top of the screen. At the same time, the program checks for whether the handle is located on the same side of that square. If the obstacle and the handle bar are on the same side of the road, then the game is over. The timer display on HEX4 and HEX5 show how long a particular game is running.
-                </p>
+            <p>
+                During game mode, two lanes will show on the screen, the left lane and the right lane, with a randomly recurring obstacle on each lane. The default starting position of the handle-bar is on the right side of the screen.<br><br>
+                During the movement of the obstacles (the red squares), their length and width increase by the size of one pixel for a downwards shift of every two pixels, and their horizontal positions change by the size of one pixel for a downwards shift of every 4 pixels. The obstacles’ speed depend on the frequency at which KEY1 is clicked. When KEY3 is pressed, the handle bar moves to left side of the road, and when KEY2 is pressed, the handle bar goes to the right side of the road.<br><br>
+                When either obstacle reaches the bottom side of the screen, that particular square is reset to the position at the top of the screen. At the same time, the program checks for whether the handle is located on the same side of that square. If the obstacle and the handle bar are on the same side of the road, then the game is over. The timer display on HEX4 and HEX5 show how long a particular game is running.
+            </p>
             </section>
-            <figure class="subpage-item">
+            <div class="figure_container">
                 <img src="img/Cycle63/main_display.jpg" alt="subpage item" width="100%">
-            </figure>
+            </div>
 
             <!-- Modules -->
             <h2>Modules</h2>
@@ -58,30 +57,26 @@
             <p>The intro screen, background, handlebars, and gameover screen images are stored as pixels of colours into the VGA memory. The background and intro screen are both 360x240 pixels images and the handlebar is 120X50.They all have 3-bit colours for each pixel.</p>
 
             <h3>Overall Design Block Diagram</h3>
-            <figure class="subpage-item">
+            <div class="figure_container">
                 <img src="img/Cycle63/block_diagram.png" alt="subpage item">
-            </figure>
+            </div>
 
             <!-- Challenge with Sensors -->
             <h2>Challenge with Sensors</h2>
 
             <h3>Phototransistor</h3>
-            <section id="grid-id" class="demo-grid">
-                <figure class="subpage-item">
-                    <img src="img/Cycle63/sensor demo.gif" alt="subpage item">
-                </figure>
-                <p>At the start of the project, I planned to place a laser pointer and a laser receiver on the pedals to trigger the completion of a cycle. I connected the laser receiver to the ADC pins on the DE1 SoC board. The schematics of this part is shown below. The hex display properly shows the translated digital values received by the phototransistor. However, as I tried to use this in the code as a replacement of KEY1, the speed of the obstacles did not change.</p>
-                <figure class="subpage-item">
-                    <img src="img/Cycle63/converter_schematic.png" alt="subpage item">
-                </figure>
-            </section>
+            <p>At the start of the project, I planned to place a laser pointer and a laser receiver on the pedals to trigger the completion of a cycle. I connected the laser receiver to the ADC pins on the DE1 SoC board. The schematics of this part is shown below. The hex display properly shows the translated digital values received by the phototransistor. However, as I tried to use this in the code as a replacement of KEY1, the speed of the obstacles did not change.</p>
+            <div class="figure_container">
+                <img src="img/Cycle63/sensor demo.gif" alt="subpage item" width="400em">
+                <img src="img/Cycle63/converter_schematic.png" alt="subpage item" width="500em">
+            </div>
 
             <h3>Micro Switch </h3>
             <section id="grid-id" class="demo-grid">
+                <p>Next, I tried placing a micro switch below the pedal so that it would be triggered every time the pedal reaches the lowest position. The switch is connected to the GPIO pins on the DE1 SoC board, and the code is attached in Appendix C. However, I realized that although the LED lights up every time the switch is pressed during the testing, there are still oscillations in the signals since the switch is a mechanical device. As a result, the program receives alternating high and low signals at very high frequencies and the game does not work properly. I eventually had to fix the module so that these oscillations do not trigger the condition.</p>
                 <figure class="subpage-item">
                     <img src="img/Cycle63/micro_switch.jpg" alt="subpage item">
                 </figure>
-                <p>Next, I tried placing a micro switch below the pedal so that it would be triggered every time the pedal reaches the lowest position. The switch is connected to the GPIO pins on the DE1 SoC board, and the code is attached in Appendix C. However, I realized that although the LED lights up every time the switch is pressed during the testing, there are still oscillations in the signals since the switch is a mechanical device. As a result, the program receives alternating high and low signals at very high frequencies and the game does not work properly. I eventually had to fix the module so that these oscillations do not trigger the condition.</p>
             </section>
         </div>
 
