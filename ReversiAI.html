@@ -65,12 +65,10 @@
             </div>
 
             <h3>3. Minmax Algorithm</h3>
-            <section id="grid-id" class="demo-grid">
-                <figure class="subpage-item">
-                    <img src="img/ReversiAI/minmax.PNG" alt="subpage item">
-                </figure>
-                <p>Due to a runtime limit posed on the project, I used the minmax algorithm to look four steps ahead. After computing all of the computer’s available moves and each score corresponding to the move as described above, instead of making the move, create a new game board and simulate each candidate move on there. For each simulation of a move X, compute all of the opponent’s possible moves and each score corresponding to the move Y. Find the highest possible opponent score and compute the net score (computer’s score at X minus opponent’s highest score). This resulting net score will be the score if the computer chooses to place the piece at that specific location X. This process was done once more in a recursion to look four steps ahead of the game.</p>
-            </section>
+            <p>Due to a runtime limit posed on the project, I used the minmax algorithm to look four steps ahead. After computing all of the computer’s available moves and each score corresponding to the move as described above, instead of making the move, create a new game board and simulate each candidate move on there. For each simulation of a move X, compute all of the opponent’s possible moves and each score corresponding to the move Y. Find the highest possible opponent score and compute the net score (computer’s score at X minus opponent’s highest score). This resulting net score will be the score if the computer chooses to place the piece at that specific location X. This process was done once more in a recursion to look four steps ahead of the game.</p>
+            <div class="figure_container">
+                <img src="img/ReversiAI/minmax.PNG" alt="subpage item">
+            </div>
 
             <h3>4. Alpha-Beta Pruning</h3>
             <section id="grid-id" class="demo-grid">
