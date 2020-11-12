@@ -5,66 +5,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Helen Dai</title>
             <link href="css/styles.css" rel="stylesheet" type="text/css">
+            <link href="css/styles_GunmanJump.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
-        <section class="PocketTravel-about">
-            <div class="PocketTravel-textbox">
-                <h1>PocketTravel</h1>
-                <p>
-                    I am a Computer Engineering undergraduate at the University of Toronto and an experienced programming tutor.
-                    I started coding when I was in Grade 11 have since then been very passionate about Computer Science
-                    and Engineering as a whole. You will see some of my selected projects from the past, including some single and
-                    multiplayer computer games, a command line chess game with AI, and some hardware applications implemented
-                    on the FPGA.<br><br>During my Professional Experience Year (U of T's PEY Progam), I interned at Intel San Jose Campus for a full year
-                    as a Software Engineering intern. During the summer of 2020, I also did research at U of T with Professor Vaughn Betz. Please
-                    check out my resume to see more detales on my past academic and professional experiences.<br><br>My current interests are
-                    Computer Vision, Machine Learning, and Human-Computer Interaction.
-                </p>
+        <div class="description-textbox">
+            <!-- Title -->
+            <h1>Gunman Jump<br><span>A Single/Multiplayer Platform Shooting Game</span></h1>
+
+            <!-- Intro -->
+            <h2>Introduction</h2>
+            <p>Gunman Jump is a video game inspired by Doodle Jump and Gun Mayhem. I wrote this game in Grade 12 using Actionscript3, and since this is a personal project, I have uploaed all source code on GitHub. Portal to the code is here. Below are two short demos I recorded for the game. On the left is a video walkthrough for the single player mode, and on the right is for multiplayer mode.</p>
+            <div class="figure_container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/b61huHCox3c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/pGhQJfQgf34" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-        </section>
+            
+            <!-- Gameplay -->
+            <h2>Gameplay</h2>
+            <h3>Rules</h3>
+            <p>In the traditional Doodle Jump game, the aim is to guide the main character up a never-ending series of platforms without falling. In Gun Mayhem, the task is to destroy all enemies by shooting them down a stationary platform. Gunman Jump is a combination of the two, so the player’s goal is to stay on the platform by jumping up the levels as the platforms move down, while also avoiding bullets that will nudge the player off the platforms. In single player mode, there are randomly positioned cannons on parts of the platforms, and they will periodically shoot bullets in fixed directions, so the player should avoid being shot while moving his or her way up. In multiplayer mode, the game can support up to three players, and each player’s task is to nudge the enemies off the platform by shooting at them.</p>
+            <figure class="subpage-grid">
+                <img src="img/GunmanJump/main_page.gif" alt="subpage item" width="22%">
+                <img src="img/GunmanJump/single_player.gif" alt="subpage item" width="22%">
+                <img src="img/GunmanJump/multi_player.gif" alt="subpage item" width="22%">
+                <img src="img/GunmanJump/paused.png" alt="subpage item" width="22%">
+            </figure>
 
-        <section class="PocketTravel-walkthrough">
-            <h1>Some of my latest work</h1>
-            <section id="gifs">
-                <!-- portfolio item 01 -->
-                <figure class="port-item">
-                    <img src="img/pocket_travel.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>PocketTravel</p>
-                        <a href="PocketTravel.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
-                </figure>
+            <h3>Charactor Customization</h3>
+            <p>A fun feature of the game I have decided to implement is the customization of characters. At the start of the game, it will prompt the player(s) to enter a name and to pick a costume. It will also ask the player(s) to specify the number of lives for each player in the round. After entering the game, each player can be revived up to the number of lives specified.</p>
+            <div class="figure_container">
+                <img src="img/GunmanJump/single_player_setup.gif" alt="subpage item" width="30%">
+                <img src="img/GunmanJump/multi_player_setup.gif" alt="subpage item" width="30%">
+            </div>
 
-                <!-- portfolio item 02 -->
-                <figure class="port-item">
-                    <img src="img/gunman_mahem.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>Gunman Mahem</p>
-                        <a href="GunmanJump.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
-                </figure>
-
-                <!-- portfolio item 03 -->
-                <figure class="port-item">
-                    <img src="img/bubble_mania.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>Bubble Mania</p>
-                        <a href="BubbleMania.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>                </figure>
-
-                <!-- portfolio item 04 -->
-                <figure class="port-item">
-                    <img src="img/cycle_63.gif" alt="portfolio item" width="1000">
-                    <figcaption class="port-desc">
-                        <p>Cycle 63</p>
-                        <a href="Cycle63.html" class="button button-accent button-small">Project details</a>
-                    </figcaption>
-                </figure>
-
-            </section>
-
-        </section>
+            <h3>Leaderboard</h3>
+            <p>Each time when a player shoots someone off the platforms in multiplayer mode, that player will be awarded with points. When the game ends (only one player left standing), the game will switch to a leaderboard view with the history scores of all existing players in descending order of scores.</p>
+            <div class="figure_container">
+                <img src="img/GunmanJump/leaderboard.png" alt="subpage item" width="30%">
+            </div>
+        </div>
 
     </body>
 
