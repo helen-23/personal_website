@@ -49,3 +49,8 @@
     margin-bottom: 1em;
     width: 100%;
 }
+
+.figure_container {
+    width: 100%;
+    text-align: center;
+}

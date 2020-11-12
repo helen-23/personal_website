@@ -34,7 +34,7 @@
             <h3>2. Change Maps</h3>
             <section id="grid-id" class="demo-grid">
                 <figure class="subpage-item">
-                    <img src="img/PocketTravel/change_map.gif" alt="subpage item" width="200%">
+                    <img src="img/PocketTravel/change_map.gif" alt="subpage item" width="1000em">
                 </figure>
                 <p>One key feature of this applications is that it supports maps of 19 major cities from different countries worldwide. On the side bar, click on “change maps” to summon up a window with a list of those cities. The user can select the desired city and the corresponding map will be automatically loaded to the screen. Here is a short demo of the process. We have chosen to keep the graphics interface at a minimal so that it saves drawing time and is easy to read. Typical cities are loaded within 2 seconds and more complex ones, such as Tokyo, can be loaded within 30 seconds. </p>
             </section>
@@ -50,40 +50,32 @@
             <h3>4. Search History</h3>
             <section id="grid-id" class="demo-grid">
                 <figure class="subpage-item">
-                    <img src="img/PocketTravel/search_history.gif" alt="subpage item">
+                    <img src="img/PocketTravel/search_history.gif" alt="subpage item" width="1000em">
                 </figure>
                 <p>By using the search bar or by click on an intersection, this search will be recorded into the history for users to recall at a later time, located at the bottom right side of the screen.</p>
             </section>
 
             <h3>5. Best Route Planning</h3>
             <p>Users can get the directions between two intersections on the map by clicking on two points on the map, by searching for two intersections, or by a combination of both. The shortest route will be highlighted and users can see step-by-step instructions in writing at the bottom of the screen. Users can also click on multiple points on the map for a multi-stop direction planning.</p>
-            <section id="grid-id" class="demo-grid">
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/direction_search.gif" alt="subpage item">
-                </figure>
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/directions_click.gif" alt="subpage item" width="200%">
-                </figure>
-            </section>
+            <div class="figure_container">
+                <img src="img/PocketTravel/direction_search.gif" alt="subpage item" width="770em">
+                <img src="img/PocketTravel/directions_click.gif" alt="subpage item" width="770em">
+            </div>
 
             <h3>6. Points of Interest (POI)</h3>
             <section id="grid-id" class="demo-grid">
                 <figure class="subpage-item">
-                    <img src="img/PocketTravel/hover_mouse.gif" alt="subpage item" width="200%">
+                    <img src="img/PocketTravel/hover_mouse.gif" alt="subpage item" width="1000em">
                 </figure>
                 <p>We use different colors to represent different types of POIs. When hovering over a POI, users are able to see its name on screen. These features help backpackers finding a specific location easier.</p>
             </section>
 
             <h3>7. Subway</h3>
             <p>By clicking the "Show Subway" button, subway lines will show up on the map. Different lines are in different colors, and when zoomed in to a certain level, small icons will become visible to indicate the location of each subway station.</p>
-            <section id="grid-id" class="demo-grid">
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/subway.jpeg" alt="subpage item">
-                </figure>
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/subway_icons.jpg" alt="subpage item">
-                </figure>
-            </section>
+            <div class="figure_container">
+                <img src="img/PocketTravel/subway.jpeg" alt="subpage item" width="770em">
+                <img src="img/PocketTravel/subway_icons.jpg" alt="subpage item" width="770em">
+            </div>
 
             <!-- Algorithms -->
             <h2>Algorithms</h2>
@@ -102,22 +94,16 @@
                 <li class="list_last">once arrived at a leaf node, first calculate the Euclidean distance between the given point and the leaf node, then for this particular example below, get the leaf node’s parent node and calculate the distance between the given point and the horizontal line that passes through the parent node. If the distance to the leaf node is shorter than the distance to the line, then there is no need to check the node on the other side of  the parent node</li>
             </ol>
             <p>That's how the k-d tree avoids the points that are unworthy of visiting. As shown on the graph, the naïve search algorithm becomes slower as more points are being searched, but using KD Tree, this algorithm does slow down as drastically, instead, it stays at around 0.</p>
-            <section id="grid-id" class="demo-grid">
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/kd_tree.gif" alt="subpage item">
-                </figure>
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/kd_tree_improvement.png" alt="subpage item">
-                </figure>
-            </section>
+            <div class="figure_container">
+                <img src="img/PocketTravel/kd_tree.gif" alt="subpage item" width="770em">
+                <img src="img/PocketTravel/kd_tree_improvement.png" alt="subpage item" width="770em">
+            </div>
 
             <h3>Auto Complete – Trie Tree</h3>
             <p>We have chosen to use the trie tree because it produces a time complexity of O(n) at runtime. The tree only had to be built once: the first level of the tree is the first letter of the street names, from A to Z, the second level is the second letter, and so on. A continuous path to the end in the tree is a full street name. There is a flag in each node to indicate if it is the end of the word.</p>
-            <section id="grid-id" class="demo-grid">
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/trie.gif" alt="subpage item">
-                </figure>
-            </section>
+            <div class="figure_container">
+                <img src="img/PocketTravel/trie.gif" alt="subpage item" width="770em">
+            </div>
 
             <h3>Best Route – Dijkstra’s vs A*</h3>
             <p>
@@ -126,42 +112,26 @@
                 How A* differs from Dijkstra's is that when it chooses the next point to visit from the priority queue, instead of choosing the point with the lowest cost, g(n), it also takes a heuristic factor, h(n), into consideration. That is, the heuristic that estimate the cost of the cheapest path from the point to the destination, which may result in choosing a point that is not the cheapest to go to for that segment, but will ultimately lead to the optimal destination faster.<br><br>
                 The image on the right compares the visited nodes for the A* algorithm and for the Dijkstra's algorithm. The yellow path is the path we found, and the purple points are the nodes we visit during the search. It is obvious that the number of points A* visited is much less than that of Dijkstra's (a spread-out circular region vs a more directed oval region). This means that A* significantly speeds up the path the searching process.
             </p>
-            <section id="grid-id" class="demo-grid">
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/dijkstra.gif" alt="subpage item">
-                </figure>
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/dijkstra_vs_astar.jpg" alt="subpage item">
-                </figure>
-            </section>
+            <div class="figure_container">
+                <img src="img/PocketTravel/dijkstra.gif" alt="subpage item" width="500em">
+                <img src="img/PocketTravel/dijkstra_vs_astar.jpg" alt="subpage item" width="770em">
+            </div>
 
             <h3>Multi-Destination Planning – Greedy, Two-Opt, and Simulated Annealing</h3>
-            <section id="grid-id" class="demo-grid">
-                <p>
-                    For multi-destination planning, we first used the greedy algorithm, where we chose a random starting point and then fetch the nearest destination as the next point to visit until we visit all the destinations. However, the paths that greedy found are not good enough because it always gets stuck at a local minimum, so we wanted to find a way to jump out of local minimum and eventually reach the global minimum.<br><br>
-                    Once an “optimal” path is found from greedy, using 2-opt, we cut the path into 3 pieces and then we reconnect the three path segments. We created 12 different types of recombination in total. In addition to this, we also implemented simulated annealing. At first the temperature is high, and it will accept the solution in a large range, so the possibility of getting a worse solution than the local minimum is high. However, the temperature will adjust and decrease over time ,so that it will gradually narrow down to near where the global minimum is. This resulted in an average of 8196 seconds traveling time decrease for the paths found.
-                </p>
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/greedy.gif" alt="subpage item">
-                </figure>
-            </section>
-            <section id="grid-id" class="demo-grid">
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/2opt.gif" alt="subpage item">
-                </figure>
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/annealing.PNG" alt="subpage item">
-                </figure>
-            </section>
-            <p>To further optimize for the final competition, we chose to implement multi-start with multithread. Since we were running on a 8-core processor for the competition portion of this project, we decided to choose the best 8 solutions obtained from the greedy search, loop through each as a candidate starting point on a separate thread, then so two-opt and simulated annealing simultaneously on each candidate. We ended up with an additional improvement of 4422 seconds decrease in average traveling time.</p>
-            <section id="grid-id" class="demo-grid">
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/multithread.PNG" alt="subpage item">
-                </figure>
-                <figure class="subpage-item">
-                    <img src="img/PocketTravel/multithread_improvement.png" alt="subpage item">
-                </figure>
-            </section>
+            <p>
+                For multi-destination planning, we first used the greedy algorithm, where we chose a random starting point and then fetch the nearest destination as the next point to visit until we visit all the destinations. However, the paths that greedy found are not good enough because it always gets stuck at a local minimum, so we wanted to find a way to jump out of local minimum and eventually reach the global minimum.<br><br>
+                Once an “optimal” path is found from greedy, using 2-opt, we cut the path into 3 pieces and then we reconnect the three path segments. We created 12 different types of recombination in total. In addition to this, we also implemented simulated annealing. At first the temperature is high, and it will accept the solution in a large range, so the possibility of getting a worse solution than the local minimum is high. However, the temperature will adjust and decrease over time ,so that it will gradually narrow down to near where the global minimum is. This resulted in an average of 8196 seconds traveling time decrease for the paths found.
+            </p>
+            <div class="figure_container">
+                <img src="img/PocketTravel/greedy.gif" alt="subpage item" width="500em">
+                <img src="img/PocketTravel/2opt.gif" alt="subpage item" width="500em">
+                <img src="img/PocketTravel/annealing.PNG" alt="subpage item" width="500em">
+            </div>
+            <p><br>To further optimize for the final competition, we chose to implement multi-start with multithread. Since we were running on a 8-core processor for the competition portion of this project, we decided to choose the best 8 solutions obtained from the greedy search, loop through each as a candidate starting point on a separate thread, then so two-opt and simulated annealing simultaneously on each candidate. We ended up with an additional improvement of 4422 seconds decrease in average traveling time.</p>
+            <div class="figure_container">
+                <img src="img/PocketTravel/multithread.PNG" alt="subpage item" width="770em">
+                <img src="img/PocketTravel/multithread_improvement.png" alt="subpage item" width="770em">
+            </div>
         </div>
 
 
