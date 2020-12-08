@@ -1,1 +1,1 @@
-This is the code for my personal CS portfolio.
+This is the code for my personal CS portfolio website.
